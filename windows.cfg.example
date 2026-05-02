@@ -1,0 +1,57 @@
+# Example: Nagios windows.cfg with per-host NSClient++ password
+# Path: /usr/local/nagios/etc/objects/windows.cfg
+#
+# The leading underscore in _NSCLIENT_PASSWORD makes it a Nagios custom
+# variable. Reference it from commands as $_HOSTNSCLIENT_PASSWORD$.
+
+###############################################################################
+# HOST DEFINITIONS
+###############################################################################
+
+define host {
+    use                     windows-server
+    host_name               winserverA
+    alias                   Windows Server A
+    address                 100.X.XXX.XX        ; Tailscale IP
+    _NSCLIENT_PASSWORD      <PASSWORD_FOR_A>
+}
+
+define host {
+    use                     windows-server
+    host_name               winserverB
+    alias                   Windows Server B
+    address                 192.168.X.XXX       ; LAN IP
+    _NSCLIENT_PASSWORD      <PASSWORD_FOR_B>
+}
+
+###############################################################################
+# SERVICE DEFINITIONS
+###############################################################################
+
+define service {
+    use                     generic-service
+    host_name               winserverA
+    service_description     CPU Load
+    check_command           check_nt!CPULOAD!-l 5,80,90
+}
+
+define service {
+    use                     generic-service
+    host_name               winserverA
+    service_description     Memory Usage
+    check_command           check_nt!MEMUSE!-w 80 -c 90
+}
+
+define service {
+    use                     generic-service
+    host_name               winserverA
+    service_description     C:\ Drive Space
+    check_command           check_nt!USEDDISKSPACE!-l c -w 80 -c 90
+}
+
+define service {
+    use                     generic-service
+    host_name               winserverA
+    service_description     Uptime
+    check_command           check_nt!UPTIME
+}
