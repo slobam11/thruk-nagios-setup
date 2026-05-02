@@ -1,0 +1,29 @@
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Local config files (with real passwords / IPs)
+*.local.conf
+*.local.cfg
+*.private.md
+secrets.txt
+credentials.txt
+
+# Backups
+*.bak
+*.backup
+*.old
+
+# Logs
+*.log
+
+# Compiled / built artifacts (if you ever add scripts)
+*.o
+*.so
+build/
+dist/
