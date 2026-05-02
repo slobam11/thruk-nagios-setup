@@ -1,0 +1,27 @@
+# Example: Thruk backend configuration
+# Path: /etc/thruk/thruk_local.conf
+#
+# This block tells Thruk to read Nagios state via the Livestatus
+# Unix socket exposed by the mk-livestatus broker module.
+
+<Component Thruk::Backend>
+  <peer>
+    name   = Local Nagios
+    type   = livestatus
+    <options>
+      peer = /usr/local/nagios/var/rw/live
+    </options>
+  </peer>
+</Component>
+
+# For a remote Nagios over TCP (Livestatus on port 6557), use:
+#
+# <Component Thruk::Backend>
+#   <peer>
+#     name   = Remote Nagios
+#     type   = livestatus
+#     <options>
+#       peer = 192.168.X.XX:6557
+#     </options>
+#   </peer>
+# </Component>
