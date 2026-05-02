@@ -1,0 +1,22 @@
+# Example: nsclient.ini configuration for NSClient++ on Windows
+# Path: C:\Program Files\NSClient++\nsclient.ini
+#
+# Replace the placeholders before using:
+#   - <NAGIOS_LAN_IP>      → e.g. 192.168.1.x
+#   - <NAGIOS_TAILSCALE_IP> → e.g. 100.100.58.x
+#   - <YOUR_PASSWORD>       → a strong password unique per host
+
+[/modules]
+NSClientServer = 1
+CheckSystem = 1
+CheckDisk = 1
+CheckExternalScripts = 1
+
+[/settings/NSClient/server]
+allowed hosts = <NAGIOS_LAN_IP>, <NAGIOS_TAILSCALE_IP>
+password = <YOUR_PASSWORD>
+port = 12489
+
+[/settings/external scripts]
+allow arguments = true
+allow nasty characters = true
