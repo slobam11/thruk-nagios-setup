@@ -14,3 +14,9 @@ Monitoring shows you the health of your servers in real time and alerts you when
 - NSClient++ (on each Windows host)
 - Tailscale (optional — if hosts are on different networks)
 - Nagstamon (optional — for desktop alerts)
+
+
+<img width="1868" height="615" alt="image" src="https://github.com/user-attachments/assets/5e0ed68f-7a6e-47ab-90f2-a19659d1da41" />
+
+<img width="692" height="228" alt="image" src="https://github.com/user-attachments/assets/e6bc9ec9-b994-4786-b1ea-3570dd30b5c0" />
+
