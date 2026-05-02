@@ -1,0 +1,18 @@
+# Example: check_nt command with per-host password support
+# Path: /usr/local/nagios/etc/objects/commands.cfg
+#
+# This is the modified version of the default check_nt command.
+# It pulls the password from the host's _NSCLIENT_PASSWORD custom variable
+# instead of hard-coding a single password for all Windows hosts.
+
+define command {
+    command_name    check_nt
+    command_line    $USER1$/check_nt -H $HOSTADDRESS$ -p 12489 -s $_HOSTNSCLIENT_PASSWORD$ -v $ARG1$ $ARG2$
+}
+
+# For comparison, the original (single-password) version was:
+#
+# define command {
+#     command_name    check_nt
+#     command_line    $USER1$/check_nt -H $HOSTADDRESS$ -p 12489 -v $ARG1$ $ARG2$
+# }
